@@ -1,0 +1,20 @@
+version: "3.2"
+services:
+  cp-schema-registry:
+    container_name: schema-registry_5
+    environment:
+      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=172.16.226.174:9092
+      - SCHEMA_REGISTRY_HOST_NAME=0.0.0.0
+      - SCHEMA_REGISTRY_LISTENERS=http://0.0.0.0:8081/
+      - SCHEMA_REGISTRY_DEBUG=true
+    image: confluentinc/cp-schema-registry:7.5.2
+    ports:
+      - 19081:8081
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 8080:8080
+    environment:
+      DYNAMIC_CONFIG_ENABLED: true
