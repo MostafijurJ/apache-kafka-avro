@@ -1,0 +1,32 @@
+{
+  "namespace": "com.learn.avro.schema",
+  "type": "record",
+  "name": "EventMessage",
+  "fields": [
+    {
+      "name": "machine",
+      "type": "string",
+      "default": "false"
+    },
+    {
+      "name": "id",
+      "type": "string",
+        "default": "false"
+    },
+    {
+      "name": "date",
+      "type": "string",
+      "default": "false"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "default": "false"
+    },
+    {
+      "name": "building",
+      "type": "string",
+      "default": "false"
+    }
+  ]
+}
