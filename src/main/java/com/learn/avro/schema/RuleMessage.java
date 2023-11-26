@@ -14,10 +14,10 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 1852529073618064180L;
+  private static final long serialVersionUID = 3512289990515011873L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RuleMessage\",\"namespace\":\"com.learn.avro.schema\",\"fields\":[{\"name\":\"station\",\"type\":\"string\"},{\"name\":\"model\",\"type\":\"string\"},{\"name\":\"io\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"value\",\"type\":\"float\"},{\"name\":\"connection\",\"type\":\"boolean\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RuleMessage\",\"namespace\":\"com.learn.avro.schema\",\"fields\":[{\"name\":\"station\",\"type\":\"string\",\"default\":\"false\"},{\"name\":\"model\",\"type\":\"string\",\"default\":\"false\"},{\"name\":\"io\",\"type\":\"string\",\"default\":\"false\"},{\"name\":\"timestamp\",\"type\":\"string\",\"default\":\"false\"},{\"name\":\"value\",\"type\":\"string\",\"default\":\"false\"},{\"name\":\"connection\",\"type\":\"string\",\"default\":\"false\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -76,9 +76,9 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
   private java.lang.CharSequence station;
   private java.lang.CharSequence model;
   private java.lang.CharSequence io;
-  private long timestamp;
-  private float value;
-  private boolean connection;
+  private java.lang.CharSequence timestamp;
+  private java.lang.CharSequence value;
+  private java.lang.CharSequence connection;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -96,7 +96,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
    * @param value The new value for value
    * @param connection The new value for connection
    */
-  public RuleMessage(java.lang.CharSequence station, java.lang.CharSequence model, java.lang.CharSequence io, java.lang.Long timestamp, java.lang.Float value, java.lang.Boolean connection) {
+  public RuleMessage(java.lang.CharSequence station, java.lang.CharSequence model, java.lang.CharSequence io, java.lang.CharSequence timestamp, java.lang.CharSequence value, java.lang.CharSequence connection) {
     this.station = station;
     this.model = model;
     this.io = io;
@@ -133,9 +133,9 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
     case 0: station = (java.lang.CharSequence)value$; break;
     case 1: model = (java.lang.CharSequence)value$; break;
     case 2: io = (java.lang.CharSequence)value$; break;
-    case 3: timestamp = (java.lang.Long)value$; break;
-    case 4: value = (java.lang.Float)value$; break;
-    case 5: connection = (java.lang.Boolean)value$; break;
+    case 3: timestamp = (java.lang.CharSequence)value$; break;
+    case 4: value = (java.lang.CharSequence)value$; break;
+    case 5: connection = (java.lang.CharSequence)value$; break;
     default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
@@ -195,7 +195,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'timestamp' field.
    * @return The value of the 'timestamp' field.
    */
-  public long getTimestamp() {
+  public java.lang.CharSequence getTimestamp() {
     return timestamp;
   }
 
@@ -204,7 +204,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'timestamp' field.
    * @param value the value to set.
    */
-  public void setTimestamp(long value) {
+  public void setTimestamp(java.lang.CharSequence value) {
     this.timestamp = value;
   }
 
@@ -212,7 +212,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'value' field.
    * @return The value of the 'value' field.
    */
-  public float getValue() {
+  public java.lang.CharSequence getValue() {
     return value;
   }
 
@@ -221,7 +221,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'value' field.
    * @param value the value to set.
    */
-  public void setValue(float value) {
+  public void setValue(java.lang.CharSequence value) {
     this.value = value;
   }
 
@@ -229,7 +229,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'connection' field.
    * @return The value of the 'connection' field.
    */
-  public boolean getConnection() {
+  public java.lang.CharSequence getConnection() {
     return connection;
   }
 
@@ -238,7 +238,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'connection' field.
    * @param value the value to set.
    */
-  public void setConnection(boolean value) {
+  public void setConnection(java.lang.CharSequence value) {
     this.connection = value;
   }
 
@@ -286,9 +286,9 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
     private java.lang.CharSequence station;
     private java.lang.CharSequence model;
     private java.lang.CharSequence io;
-    private long timestamp;
-    private float value;
-    private boolean connection;
+    private java.lang.CharSequence timestamp;
+    private java.lang.CharSequence value;
+    private java.lang.CharSequence connection;
 
     /** Creates a new Builder */
     private Builder() {
@@ -483,7 +483,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'timestamp' field.
       * @return The value.
       */
-    public long getTimestamp() {
+    public java.lang.CharSequence getTimestamp() {
       return timestamp;
     }
 
@@ -493,7 +493,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'timestamp'.
       * @return This builder.
       */
-    public com.learn.avro.schema.RuleMessage.Builder setTimestamp(long value) {
+    public com.learn.avro.schema.RuleMessage.Builder setTimestamp(java.lang.CharSequence value) {
       validate(fields()[3], value);
       this.timestamp = value;
       fieldSetFlags()[3] = true;
@@ -514,6 +514,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public com.learn.avro.schema.RuleMessage.Builder clearTimestamp() {
+      timestamp = null;
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -522,7 +523,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'value' field.
       * @return The value.
       */
-    public float getValue() {
+    public java.lang.CharSequence getValue() {
       return value;
     }
 
@@ -532,7 +533,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'value'.
       * @return This builder.
       */
-    public com.learn.avro.schema.RuleMessage.Builder setValue(float value) {
+    public com.learn.avro.schema.RuleMessage.Builder setValue(java.lang.CharSequence value) {
       validate(fields()[4], value);
       this.value = value;
       fieldSetFlags()[4] = true;
@@ -553,6 +554,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public com.learn.avro.schema.RuleMessage.Builder clearValue() {
+      value = null;
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -561,7 +563,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'connection' field.
       * @return The value.
       */
-    public boolean getConnection() {
+    public java.lang.CharSequence getConnection() {
       return connection;
     }
 
@@ -571,7 +573,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'connection'.
       * @return This builder.
       */
-    public com.learn.avro.schema.RuleMessage.Builder setConnection(boolean value) {
+    public com.learn.avro.schema.RuleMessage.Builder setConnection(java.lang.CharSequence value) {
       validate(fields()[5], value);
       this.connection = value;
       fieldSetFlags()[5] = true;
@@ -592,6 +594,7 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public com.learn.avro.schema.RuleMessage.Builder clearConnection() {
+      connection = null;
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -604,9 +607,9 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
         record.station = fieldSetFlags()[0] ? this.station : (java.lang.CharSequence) defaultValue(fields()[0]);
         record.model = fieldSetFlags()[1] ? this.model : (java.lang.CharSequence) defaultValue(fields()[1]);
         record.io = fieldSetFlags()[2] ? this.io : (java.lang.CharSequence) defaultValue(fields()[2]);
-        record.timestamp = fieldSetFlags()[3] ? this.timestamp : (java.lang.Long) defaultValue(fields()[3]);
-        record.value = fieldSetFlags()[4] ? this.value : (java.lang.Float) defaultValue(fields()[4]);
-        record.connection = fieldSetFlags()[5] ? this.connection : (java.lang.Boolean) defaultValue(fields()[5]);
+        record.timestamp = fieldSetFlags()[3] ? this.timestamp : (java.lang.CharSequence) defaultValue(fields()[3]);
+        record.value = fieldSetFlags()[4] ? this.value : (java.lang.CharSequence) defaultValue(fields()[4]);
+        record.connection = fieldSetFlags()[5] ? this.connection : (java.lang.CharSequence) defaultValue(fields()[5]);
         return record;
       } catch (org.apache.avro.AvroMissingFieldException e) {
         throw e;
@@ -645,11 +648,11 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
 
     out.writeString(this.io);
 
-    out.writeLong(this.timestamp);
+    out.writeString(this.timestamp);
 
-    out.writeFloat(this.value);
+    out.writeString(this.value);
 
-    out.writeBoolean(this.connection);
+    out.writeString(this.connection);
 
   }
 
@@ -664,11 +667,11 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
 
       this.io = in.readString(this.io instanceof Utf8 ? (Utf8)this.io : null);
 
-      this.timestamp = in.readLong();
+      this.timestamp = in.readString(this.timestamp instanceof Utf8 ? (Utf8)this.timestamp : null);
 
-      this.value = in.readFloat();
+      this.value = in.readString(this.value instanceof Utf8 ? (Utf8)this.value : null);
 
-      this.connection = in.readBoolean();
+      this.connection = in.readString(this.connection instanceof Utf8 ? (Utf8)this.connection : null);
 
     } else {
       for (int i = 0; i < 6; i++) {
@@ -686,15 +689,15 @@ public class RuleMessage extends org.apache.avro.specific.SpecificRecordBase imp
           break;
 
         case 3:
-          this.timestamp = in.readLong();
+          this.timestamp = in.readString(this.timestamp instanceof Utf8 ? (Utf8)this.timestamp : null);
           break;
 
         case 4:
-          this.value = in.readFloat();
+          this.value = in.readString(this.value instanceof Utf8 ? (Utf8)this.value : null);
           break;
 
         case 5:
-          this.connection = in.readBoolean();
+          this.connection = in.readString(this.connection instanceof Utf8 ? (Utf8)this.connection : null);
           break;
 
         default:

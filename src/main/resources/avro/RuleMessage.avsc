@@ -5,27 +5,33 @@
   "fields": [
     {
       "name": "station",
-      "type": "string"
+      "type": "string",
+      "default": "false"
     },
     {
       "name": "model",
-      "type": "string"
+      "type": "string",
+      "default": "false"
     },
     {
       "name": "io",
-      "type": "string"
+      "type": "string",
+      "default": "false"
     },
     {
       "name": "timestamp",
-      "type": "long"
+      "type": "string",
+      "default": "false"
     },
     {
       "name": "value",
-      "type": "float"
+      "type": "string",
+      "default": "false"
     },
     {
       "name": "connection",
-      "type": "boolean"
+      "type": "string",
+      "default": "false"
     }
   ]
 }
