@@ -3,6 +3,7 @@ package com.learn.avro.config;
 import com.learn.avro.schema.EventMessage;
 import com.learn.avro.schema.RuleMessage;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
+import io.confluent.kafka.serializers.subject.TopicRecordNameStrategy;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -31,6 +32,7 @@ public class KafkaProducerConfig {
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
         configProps.put("schema.registry.url", schemaRegistryUrl);
+        configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 

@@ -42,7 +42,7 @@ public class AvroController {
                     .setStation(generateRandomStation())
                     .build();
 
-//            avroProducer.sendRuleEvent(ruleMessage);
+            avroProducer.sendRuleEvent(ruleMessage);
         }
     }
 

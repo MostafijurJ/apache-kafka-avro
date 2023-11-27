@@ -11,17 +11,17 @@ import org.springframework.stereotype.Component;
 public class AvroConsumer {
 
 
-    @KafkaListener(topics = "${avro.event.topic.name}", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "${avro.event.topic.name}", containerFactory = "eventMessageKafkaListenerContainerFactory")
     public void consumeEventMessage(EventMessage eventMessage) {
         System.out.println("Consumed event -> " + eventMessage);
-       log.info("Consumed event details -> " + eventMessage.getMachine());
+       log.info("Event Message Consumed -> " + eventMessage.getMachine());
     }
 
 
-    @KafkaListener(topics = "${avro.rule.topic.name}", containerFactory = "ruleKafkaListenerContainerFactory")
+    @KafkaListener(topics = "${avro.rule.topic.name}", containerFactory = "ruleMessageKafkaListenerContainerFactory")
     public void consumeRuleMessage(RuleMessage ruleMessage) {
         System.out.println("rule event consumed -> " + ruleMessage);
-        log.info("Rule event consumed -> " + ruleMessage.getModel());
+        log.info("Rule Message Consumed -> " + ruleMessage.getModel());
     }
 
 

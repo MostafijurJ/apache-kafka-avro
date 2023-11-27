@@ -4,6 +4,7 @@ import com.learn.avro.schema.EventMessage;
 import com.learn.avro.schema.RuleMessage;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
+import io.confluent.kafka.serializers.subject.TopicRecordNameStrategy;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,8 +35,7 @@ public class KafkaConsumerConfig {
     private Integer concurrency;
 
 
-    @Bean
-    public ConsumerFactory<String, EventMessage> consumerFactory() {
+    private <T> ConsumerFactory<String, T> createConsumerFactory(Class<T> valueType) {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
@@ -46,34 +46,32 @@ public class KafkaConsumerConfig {
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
-    @Bean(name = "kafkaListenerContainerFactory")
-    public ConcurrentKafkaListenerContainerFactory<String, EventMessage> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, EventMessage> factory =
+    private <T> ConcurrentKafkaListenerContainerFactory<String, T> createListenerContainerFactory(
+            ConsumerFactory<String, T> consumerFactory) {
+        ConcurrentKafkaListenerContainerFactory<String, T> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(consumerFactory);
         factory.setConcurrency(concurrency);
         return factory;
     }
-
 
     @Bean
-    public ConsumerFactory<String, RuleMessage> ruleConsumerFactory() {
-        Map<String, Object> props = new HashMap<>();
-        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-        props.put("schema.registry.url", schemaRegistryUrl);
-        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
-        props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, "true");
-        return new DefaultKafkaConsumerFactory<>(props);
+    public ConsumerFactory<String, EventMessage> eventMessageConsumerFactory() {
+        return createConsumerFactory(EventMessage.class);
     }
 
-    @Bean(name = "ruleKafkaListenerContainerFactory")
-    public ConcurrentKafkaListenerContainerFactory<String, RuleMessage> ruleKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, RuleMessage> factory =
-                new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(ruleConsumerFactory());
-        factory.setConcurrency(concurrency);
-        return factory;
+    @Bean(name = "eventMessageKafkaListenerContainerFactory")
+    public ConcurrentKafkaListenerContainerFactory<String, EventMessage> eventMessageKafkaListenerContainerFactory() {
+        return createListenerContainerFactory(eventMessageConsumerFactory());
+    }
+
+    @Bean
+    public ConsumerFactory<String, RuleMessage> ruleMessageConsumerFactory() {
+        return createConsumerFactory(RuleMessage.class);
+    }
+
+    @Bean(name = "ruleMessageKafkaListenerContainerFactory")
+    public ConcurrentKafkaListenerContainerFactory<String, RuleMessage> ruleMessageKafkaListenerContainerFactory() {
+        return createListenerContainerFactory(ruleMessageConsumerFactory());
     }
 }

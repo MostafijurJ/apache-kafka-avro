@@ -34,7 +34,7 @@ public class AvroProducer {
     }
 
     public void sendRuleEvent(RuleMessage eventMessage) {
-        ruleMessageKafkaTemplate.send(eventMessageTopicName, eventMessage);
+        ruleMessageKafkaTemplate.send(ruleMessageTopicName, eventMessage);
         log.info(String.format("Produced RuleMessage -> %s", eventMessage));
     }
 
