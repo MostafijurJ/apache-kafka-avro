@@ -31,10 +31,10 @@ public class KafkaProducerConfig {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, AvroSerializer.class);
+        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
 /*        configProps.put("schema.registry.url", schemaRegistryUrl);
         configProps.put("value.subject.name.strategy", TopicRecordNameStrategy.class.getName());*/
-//        configProps.put("auto.register.schemas","false");
+        configProps.put("auto.register.schemas","false");
         return new DefaultKafkaProducerFactory<>(configProps);
     }
 

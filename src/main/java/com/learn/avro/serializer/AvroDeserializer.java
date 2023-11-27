@@ -16,13 +16,16 @@ import java.util.Arrays;
 import java.util.Map;
 
 public class AvroDeserializer<T extends SpecificRecordBase> implements Deserializer<T> {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(AvroDeserializer.class);
 
     protected final Class<T> targetType;
 
     public AvroDeserializer(Class<T> targetType) {
         this.targetType = targetType;
+    }
+
+    public AvroDeserializer() {
+        this.targetType = null;
     }
 
     @Override

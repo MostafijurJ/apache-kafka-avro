@@ -1,16 +1,18 @@
 package com.learn.avro.config;
 
 import com.learn.avro.schema.EventMessage;
-import com.learn.avro.schema.RuleMessage;
 import com.learn.avro.serializer.AvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
+import org.apache.avro.reflect.AvroSchema;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
@@ -63,6 +65,7 @@ public class KafkaConsumerConfig {
     public ConcurrentKafkaListenerContainerFactory<String, EventMessage> eventMessageKafkaListenerContainerFactory() {
         return createListenerContainerFactory(eventMessageConsumerFactory());
     }
+
 
    /* @Bean
     public ConsumerFactory<String, RuleMessage> ruleMessageConsumerFactory() {

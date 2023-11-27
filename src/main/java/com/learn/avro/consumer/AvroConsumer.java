@@ -1,7 +1,6 @@
 package com.learn.avro.consumer;
 
 import com.learn.avro.schema.EventMessage;
-import com.learn.avro.schema.RuleMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
@@ -14,7 +13,7 @@ public class AvroConsumer {
     @KafkaListener(topics = "${avro.event.topic.name}", containerFactory = "eventMessageKafkaListenerContainerFactory")
     public void consumeEventMessage(EventMessage eventMessage) {
         System.out.println("Consumed event -> " + eventMessage);
-       log.info("Event Message Consumed -> " + eventMessage.getMachine());
+        log.info("Event Message Consumed -> " + eventMessage.getMachine());
     }
 
 
