@@ -2,6 +2,7 @@ package com.learn.avro.config;
 
 import com.learn.avro.schema.EventMessage;
 import com.learn.avro.schema.RuleMessage;
+import com.learn.avro.serializer.AvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializer;
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -38,9 +39,8 @@ public class KafkaConsumerConfig {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-        props.put("schema.registry.url", schemaRegistryUrl);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, AvroDeserializer.class.getName());
         props.put(KafkaAvroDeserializerConfig.SPECIFIC_AVRO_READER_CONFIG, "true");
         return new DefaultKafkaConsumerFactory<>(props);
     }
@@ -64,7 +64,7 @@ public class KafkaConsumerConfig {
         return createListenerContainerFactory(eventMessageConsumerFactory());
     }
 
-    @Bean
+   /* @Bean
     public ConsumerFactory<String, RuleMessage> ruleMessageConsumerFactory() {
         return createConsumerFactory(RuleMessage.class);
     }
@@ -72,5 +72,5 @@ public class KafkaConsumerConfig {
     @Bean(name = "ruleMessageKafkaListenerContainerFactory")
     public ConcurrentKafkaListenerContainerFactory<String, RuleMessage> ruleMessageKafkaListenerContainerFactory() {
         return createListenerContainerFactory(ruleMessageConsumerFactory());
-    }
+    }*/
 }

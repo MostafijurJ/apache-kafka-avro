@@ -20,7 +20,7 @@ public class AvroController {
     @GetMapping("/send")
     void sentMessages() {
 
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 10; i++) {
             EventMessage message = EventMessage.newBuilder()
                     .setId(generateRandomId())
                     .setBuilding(generateRandomBuilding())
@@ -33,7 +33,7 @@ public class AvroController {
         }
 
 
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 10; i++) {
             RuleMessage ruleMessage = RuleMessage.newBuilder()
                     .setConnection("Connection_"+1)
                     .setModel("pump_" + (i + 1))
@@ -42,7 +42,7 @@ public class AvroController {
                     .setStation(generateRandomStation())
                     .build();
 
-            avroProducer.sendRuleEvent(ruleMessage);
+//            avroProducer.sendRuleEvent(ruleMessage);
         }
     }
 

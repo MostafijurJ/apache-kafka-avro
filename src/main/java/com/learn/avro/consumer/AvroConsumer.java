@@ -18,11 +18,11 @@ public class AvroConsumer {
     }
 
 
-    @KafkaListener(topics = "${avro.rule.topic.name}", containerFactory = "ruleMessageKafkaListenerContainerFactory")
+/*    @KafkaListener(topics = "${avro.rule.topic.name}", containerFactory = "ruleMessageKafkaListenerContainerFactory")
     public void consumeRuleMessage(RuleMessage ruleMessage) {
         System.out.println("rule event consumed -> " + ruleMessage);
         log.info("Rule Message Consumed -> " + ruleMessage.getModel());
-    }
+    }*/
 
 
 }
