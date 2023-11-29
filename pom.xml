@@ -35,6 +35,19 @@
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
+        <!-- dependency for kafka stream   -->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.confluent</groupId>
+            <artifactId>kafka-streams-avro-serde</artifactId>
+            <version>5.2.1</version>
+        </dependency>
+        <!-- dependency for kafka stream   -->
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

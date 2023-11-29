@@ -20,12 +20,12 @@ public class AvroController {
     @GetMapping("/send")
     void sentMessages() {
 
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 10; i++) {
             EventMessage message = EventMessage.newBuilder()
                     .setId(generateRandomId())
                     .setBuilding(generateRandomBuilding())
                     .setMachine("pump_"+i)
-                    .setStatus("Success")
+                    .setStatus(generateRandomStatus())
                     .setDate(generateRandomDate())
                     .build();
 
@@ -42,13 +42,18 @@ public class AvroController {
                     .setStation(generateRandomStation())
                     .build();
 
-            avroProducer.sendRuleEvent(ruleMessage);
+//            avroProducer.sendRuleEvent(ruleMessage);
         }
     }
 
     private String generateRandomId() {
         // Logic to generate a random ID, for example:
         return String.valueOf(new Random().nextInt(1000));
+    }
+
+    private String generateRandomStatus() {
+        String[] buildings = {"Success", "Fail", "Others"};
+        return buildings[new Random().nextInt(buildings.length)];
     }
 
     private String generateRandomBuilding() {

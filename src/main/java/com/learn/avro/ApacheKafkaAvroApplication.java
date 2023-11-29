@@ -9,6 +9,6 @@ public class ApacheKafkaAvroApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ApacheKafkaAvroApplication.class, args);
-    }
 
+    }
 }
