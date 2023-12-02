@@ -1,2 +1,2 @@
-# apache-kafka-Avro
+# Apache-Kafka-Avro
 Apache Avro with Schema registry
