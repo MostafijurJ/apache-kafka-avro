@@ -5,6 +5,7 @@ import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.KStream;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +17,7 @@ import org.springframework.kafka.support.KafkaStreamBrancher;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Properties;
 
 
 @Configuration
@@ -40,6 +42,9 @@ public class kafkaStreamTopicSplitConfig{
 
     @Bean
     public KStream<String, EventMessage> kStream(StreamsBuilder streamsBuilder) {
+        Properties props = new Properties();
+        props.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
+
         KStream<String, EventMessage> stream = streamsBuilder.stream(eventMessageTopicName, Consumed.with(Serdes.String(), iotSerde()));
 
         new KafkaStreamBrancher<String, EventMessage>()
